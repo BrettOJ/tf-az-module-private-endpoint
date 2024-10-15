@@ -79,3 +79,26 @@ variable "create_nsg" {
   default = false
   
 }
+
+variable "address_space" {
+  type        = list(string)
+  description = "(Required) Specifies the Address Space that should be used for the Virtual Network. Changing this forces a new resource to be created."  
+}
+
+variable "dns_servers" {
+  type        = list(string)
+  description = "(Optional) Specifies the DNS Servers that should be used for the Virtual Network. Changing this forces a new resource to be created."
+  default     = null
+}
+
+variable "naming_convention_info" {
+  type = map(object({
+    project_code = string
+    env          = string
+    zone         = string
+    tier         = string
+    name         = string
+  }))
+  description = "(Required) Specifies the Naming Convention to be used for the resources."
+  
+}
