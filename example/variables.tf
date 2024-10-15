@@ -78,3 +78,9 @@ variable "private_dns_zone_group_private_dns_zone_ids" {
   type        = string
   description = "(Required) Specifies the ID of the Private DNS Zone to connect to. Changing this forces a new resource to be created."
 }
+
+variable "naming_convention_info" {
+  type        = map(string)
+  description = "Naming convention information"
+  
+}

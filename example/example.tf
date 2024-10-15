@@ -32,8 +32,8 @@ module "azure_private_endpoint" {
   subnet_id                     = var.subnet_id
   custom_network_interface_name = var.custom_network_interface_name
   tags                          = local.tags
-  naming_convention_info        = local.naming_convention_info
-
+  naming_convention_info = local.naming_convention_info
+  
   private_service_connection = {
     name                           = var.private_service_connection_name
     private_connection_resource_id = var.private_service_connection_private_connection_resource_id
