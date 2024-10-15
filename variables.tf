@@ -52,6 +52,7 @@ variable "ip_configuration" {
     member_name        = string
   }))
   description = "(Optional) Specifies the list of IP Configurations to include within the ip_configuration."
+  default     = null
 }
 
 variable "naming_convention_info" {
@@ -63,5 +64,5 @@ variable "naming_convention_info" {
     name         = string
   }))
   description = "(Optional) Specifies the naming convention for the resource."
-  
+
 }
