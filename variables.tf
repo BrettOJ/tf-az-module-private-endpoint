@@ -33,36 +33,35 @@ variable "private_dns_zone_group" {
 }
 
 variable "private_service_connection" {
-  type = list(object({
+  type = object({
     name                              = string
     is_manual_connection              = bool
     private_connection_resource_id    = string
     private_connection_resource_alias = string
     subresource_names                 = list(string)
     request_message                   = string
-  }))
+  })
   description = "(Optional) Specifies the list of Private Service Connections to include within the private_service_connection."
 }
 
 variable "ip_configuration" {
-  type = list(object({
+  type = object({
     name               = string
     private_ip_address = string
     subresource_name   = string
     member_name        = string
-  }))
+  })
   description = "(Optional) Specifies the list of IP Configurations to include within the ip_configuration."
   default     = null
 }
 
 variable "naming_convention_info" {
-  type = map(object({
+  type = object({
     project_code = string
     env          = string
     zone         = string
     tier         = string
     name         = string
-  }))
+  })
   description = "(Optional) Specifies the naming convention for the resource."
-
 }

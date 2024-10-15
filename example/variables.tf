@@ -29,7 +29,7 @@ variable "private_service_connection_private_connection_resource_alias" {
   description = "(Optional) Specifies the Alias of the Private Connection Resource to connect to."
 }
 
-variable "private_service_connection_subresource_name" {
+variable "private_service_connection_subresource_names" {
   type        = list(string)
   description = "(Optional) Specifies the list of Subresource Names to include within the private_service_connection."
 }
@@ -91,14 +91,3 @@ variable "dns_servers" {
   default     = null
 }
 
-variable "naming_convention_info" {
-  type = map(object({
-    project_code = string
-    env          = string
-    zone         = string
-    tier         = string
-    name         = string
-  }))
-  description = "(Required) Specifies the Naming Convention to be used for the resources."
-  
-}

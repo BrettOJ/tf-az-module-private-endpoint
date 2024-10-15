@@ -13,12 +13,12 @@ resource "azurerm_private_endpoint" "az_private_endpoint" {
     private_connection_resource_id    = var.private_service_connection.private_connection_resource_id
     is_manual_connection              = var.private_service_connection.is_manual_connection
     private_connection_resource_alias = var.private_service_connection.private_connection_resource_alias
-    subresource_names                 = var.private_service_connection.subresource_name
+    subresource_names                 = var.private_service_connection.subresource_names
     request_message                   = var.private_service_connection.request_message
   }
 
   dynamic "ip_configuration" {
-    for_each = var.ip_configuration != null ? var.ip_configuration : []
+    for_each = var.ip_configuration != null ? [var.ip_configuration] : []
     content {
       name               = ip_configuration.value.name
       private_ip_address = ip_configuration.value.private_ip_address

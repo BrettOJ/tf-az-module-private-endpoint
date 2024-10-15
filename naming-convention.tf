@@ -1,5 +1,5 @@
 #firewall name
-module "azpe_app_rule_name" {
+module "azpe_name" {
   source      = "git::https://github.com/BrettOJ/tf-az-module-naming-convention?ref=main"
   name_format = "res_type|project_code|env|zone|tier|name"
   naming_convention_info = {
@@ -8,6 +8,6 @@ module "azpe_app_rule_name" {
       tags      = var.tags
     }
   }
-  resource_type = "azfw-app-rule"
+  resource_type = "azpe"
 }
 
