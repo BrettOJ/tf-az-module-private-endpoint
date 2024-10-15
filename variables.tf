@@ -25,10 +25,10 @@ variable "tags" {
 }
 
 variable "private_dns_zone_group" {
-  type = list(object({
+  type = object({
     name                 = string
     private_dns_zone_ids = list(string)
-  }))
+  })
   description = "(Optional) Specifies the list of Private DNS Zones to include within the private_dns_zone_group."
 }
 

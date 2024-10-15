@@ -75,7 +75,7 @@ module "azure_private_endpoint" {
 
   location                      = var.location
   resource_group_name           = module.resource_groups.rg_output[1].name
-  subnet_id                     = module.azure_subnet.subnet_output[001].id
+  subnet_id                     = module.azure_subnet.snet_output[1].id
   custom_network_interface_name = var.custom_network_interface_name
   tags                          = local.tags
   naming_convention_info        = var.naming_convention_info
