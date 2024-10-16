@@ -27,6 +27,7 @@ variable "private_service_connection_is_manual_connection" {
 variable "private_service_connection_private_connection_resource_alias" {
   type        = string
   description = "(Optional) Specifies the Alias of the Private Connection Resource to connect to."
+  default = null
 }
 
 variable "private_service_connection_subresource_names" {
@@ -68,10 +69,6 @@ variable "private_dns_zone_group_name" {
   description = "(Required) Specifies the Name of the Private DNS Zone Group. Changing this forces a new resource to be created."
 }
 
-variable "private_dns_zone_group_private_dns_zone_ids" {
-  type        = string
-  description = "(Required) Specifies the ID of the Private DNS Zone to connect to. Changing this forces a new resource to be created."
-}
 
 variable "create_nsg" {
   type        = bool
@@ -91,3 +88,7 @@ variable "dns_servers" {
   default     = null
 }
 
+variable "domain_name" {
+  type = string
+  description = "(Optional) Specifies the Domain Name that should be used for the Private DNS Zone. Changing this forces a new resource to be created."
+}

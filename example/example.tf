@@ -1,10 +1,10 @@
 locals {
   naming_convention_info = {
-    project_code = "project_code"
+    project_code = "mbs"
     env         = "env"
-    zone         = "zone"
-    tier         = "tier"
-    name         = "name"
+    zone         = "z"
+    tier         = "in"
+    name         = "01"
     agency_code  = "acS"
   }
   tags = {
@@ -72,7 +72,7 @@ module "azure_subnet" {
 }
 
 module "azure_private_endpoint" {
-  source = "../" #"git::https://github.com/BrettOJ/tf-az-module-private-endpoint?ref=main"
+  source = "git::https://github.com/BrettOJ/tf-az-module-private-endpoint?ref=main"
 
   location                      = var.location
   resource_group_name           = module.resource_groups.rg_output[1].name
@@ -93,19 +93,23 @@ module "azure_private_endpoint" {
 
   private_dns_zone_group = {
     name                 = var.private_dns_zone_group_name
-    private_dns_zone_ids = [var.private_dns_zone_group_private_dns_zone_ids]
+    private_dns_zone_ids = [module.azure_private_dns_zone.azprvdns_output.id]
+    }
+    depends_on = [ module.azure_private_dns_zone ]
   }
 
-}
 
-resource "azurerm_private_dns_zone" "example" {
-  name                = "privatelink.blob.core.windows.net"
+
+module "azure_private_dns_zone" {
+  source = "git::https://github.com/BrettOJ/tf-az-module-azure-private-dns-zone?ref=main"
+  domain_name                = var.domain_name
   resource_group_name = module.resource_groups.rg_output[1].name
+  tags                = local.tags
 }
 
 resource "azurerm_private_dns_zone_virtual_network_link" "example" {
   name                  = "example-link"
   resource_group_name   = module.resource_groups.rg_output[1].name
-  private_dns_zone_name = azurerm_private_dns_zone.example.name
+  private_dns_zone_name = module.azure_private_dns_zone.azprvdns_output.name
   virtual_network_id    = module.azure_virtual_network.vnets_output.id
 }
