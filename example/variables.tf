@@ -93,8 +93,3 @@ variable "domain_name" {
   description = "(Optional) Specifies the Domain Name that should be used for the Private DNS Zone. Changing this forces a new resource to be created."
 }
 
-variable "endpoint_type" {
-  type = string
-  description = "(Required) Specifies the Type of the Private Endpoint. Changing this forces a new resource to be created."
-  
-}

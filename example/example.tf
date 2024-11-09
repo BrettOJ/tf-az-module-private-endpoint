@@ -73,7 +73,7 @@ module "azure_subnet" {
 
 module "azure_private_endpoint" {
   source = "git::https://github.com/BrettOJ/tf-az-module-private-endpoint?ref=main"
-
+name = "pe-azure-private-endpoint"
   location                      = var.location
   resource_group_name           = module.resource_groups.rg_output[1].name
   subnet_id                     = module.azure_subnet.snet_output[1].id
