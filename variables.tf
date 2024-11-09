@@ -57,10 +57,9 @@ variable "ip_configuration" {
 
 variable "naming_convention_info" {
   type = object({
-    project_code = string
     env          = string
     zone         = string
-    tier         = string
+    app         = string
     name         = string
   })
   description = "(Optional) Specifies the naming convention for the resource."
