@@ -81,6 +81,7 @@ module "azure_private_endpoint" {
   tags                          = local.tags
   naming_convention_info        = local.naming_convention_info
   ip_configuration = null
+  endpoint_type    = var.endpoint_type
 
   private_service_connection = {
     name                              = var.private_service_connection_name

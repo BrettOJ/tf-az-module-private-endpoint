@@ -1,6 +1,6 @@
 
 resource "azurerm_private_endpoint" "az_private_endpoint" {
-  name                          = module.azpe_name.naming_convention_output[var.naming_convention_info.name].names.0
+  name                          = concat([module.azpe_name.naming_convention_output[var.naming_convention_info.name].names.0], [var.endpoint_type])
   location                      = var.location
   resource_group_name           = var.resource_group_name
   subnet_id                     = var.subnet_id

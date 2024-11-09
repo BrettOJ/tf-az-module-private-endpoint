@@ -65,3 +65,8 @@ variable "naming_convention_info" {
   })
   description = "(Optional) Specifies the naming convention for the resource."
 }
+
+variable "endpoint_type" {
+  type        = string
+  description = "(Required) Specifies the type of the Private Endpoint. Changing this forces a new resource to be created."
+}
