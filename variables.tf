@@ -58,7 +58,7 @@ variable "ip_configuration" {
 variable "naming_convention_info" {
   type = object({
     env          = string
-    zone         = string
+    site         = string
     app         = string
     name         = string
   })
